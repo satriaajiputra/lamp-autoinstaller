@@ -10,7 +10,7 @@ fi
 
 cd /etc/apt
 mv sources.list sources.txt
-wget -O sources.list "https://raw.githubusercontent.com/satriaajiputra/script/master/sources.list"
+wget -O sources.list "https://raw.githubusercontent.com/satriaajiputra/lamp-autoinstaller/master/src/sources.list"
 cd
 
 # update and install some app
@@ -25,7 +25,7 @@ root_password=`pwgen -s 16 1`
 a2enmod rewrite
 cd /etc/apache2/sites-available
 mv 000-default.conf 000-default.bak
-wget -O 000-default.conf "https://raw.githubusercontent.com/satriaajiputra/script/master/000-default.conf"
+wget -O 000-default.conf "https://raw.githubusercontent.com/satriaajiputra/lamp-autoinstaller/master/src/vhostconfig.conf"
 service apache2 restart
 cd /home
 ln -s /var/www/html
