@@ -2,6 +2,7 @@
 
 # created at 21/07/17
 # By Satmaxt Developer
+# at Sukabumi, West Java, Indonesia
 
 if [[ $USER != 'root' ]]; then
 	echo "Sorry.. Need root access for launch this script."
