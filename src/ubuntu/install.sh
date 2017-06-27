@@ -93,7 +93,7 @@ if [ $rwebmin == "y" ]
 		apt-get install webmin -y
 
 		# turn off ssl of webmin
-		sed 's/ssl=1/ssl=0/' /etc/webmin/miniserv.conf
+		sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
 		service webmin restart
 fi
 

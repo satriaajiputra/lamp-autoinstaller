@@ -35,6 +35,7 @@ a2enmod rewrite
 cd /etc/apache2/sites-available
 mv default default.bak
 wget -O default "https://raw.githubusercontent.com/satriaajiputra/lamp-autoinstaller/master/src/debian/vhostconfig.conf"
+mkdir /var/www/html
 service apache2 restart
 cd /home
 ln -s /var/www/html
@@ -72,7 +73,7 @@ apt-key add dotdeb.gpg -y
 rm -rf dotdeb.gpg
 
 apt-get update -y
-apt-get install -y php5 libapache2-mod-php5 php5-cli php5-common php5-gd php5-intl php5-mysql php5-mcrypt
+apt-get install -y php5 libapache2-mod-php5 php5-cli php5-common php5-gd php5-intl php5-mysql php5-mssql php5-mcrypt
 
 echo "<?php phpinfo(); ?>" > /var/www/html/info.php
 
@@ -98,7 +99,7 @@ if [ $rwebmin == "y" ]
 		apt-get install webmin -y
 
 		# turn off ssl of webmin
-		sed 's/ssl=1/ssl=0/' /etc/webmin/miniserv.conf
+		sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
 		service webmin restart
 fi
 
