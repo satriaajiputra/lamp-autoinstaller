@@ -9,5 +9,5 @@ cd root
 ```
 And execute this command
 ```bash
-wget -O install.sh "https://raw.githubusercontent.com/satriaajiputra/lamp-autoinstaller/master/src/install.sh" && chmod +x install.sh && ./install.sh
+wget -O install.sh "https://raw.githubusercontent.com/satriaajiputra/lamp-autoinstaller/master/src/ubuntu/install.sh" && chmod +x install.sh && ./install.sh
 ```

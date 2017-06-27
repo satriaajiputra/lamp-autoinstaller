@@ -19,7 +19,7 @@ echo -n "Do you want to install Git and Composer? [Y/n]: "
 read gitcomp
 
 mv sources.list sources.txt
-wget -O sources.list "https://raw.githubusercontent.com/satriaajiputra/lamp-autoinstaller/master/src/debian/sources.list"
+wget -O sources.list "https://raw.githubusercontent.com/satriaajiputra/lamp-autoinstaller/master/src/ubuntu/sources.list"
 cd
 
 # update and install some app
@@ -33,8 +33,8 @@ root_password=`pwgen -s 16 1`
 # set webserver
 a2enmod rewrite
 cd /etc/apache2/sites-available
-mv default default.bak
-wget -O default "https://raw.githubusercontent.com/satriaajiputra/lamp-autoinstaller/master/src/debian/vhostconfig.conf"
+mv 000-default.conf 000-default.bak
+wget -O 000-default.conf "https://raw.githubusercontent.com/satriaajiputra/lamp-autoinstaller/master/src/ubuntu/vhostconfig.conf"
 service apache2 restart
 cd /home
 ln -s /var/www/html
@@ -65,14 +65,9 @@ SETSQL
 # end mysql install
 
 # select php
-echo "deb http://packages.dotdeb.org wheezy-php56 all" > /etc/apt/sources.list.d/dotdeb.list
-echo "deb-src http://packages.dotdeb.org wheezy-php56 all" >> /etc/apt/sources.list.d/dotdeb.List
-wget https://www.dotdeb.org/dotdeb.gpg
-apt-key add dotdeb.gpg -y
-rm -rf dotdeb.gpg
-
+sudo add-apt-repository ppa:ondrej/php -y
 apt-get update -y
-apt-get install -y php5 libapache2-mod-php5 php5-cli php5-common php5-gd php5-intl php5-mysql php5-mcrypt
+apt-get install -y php7.0 libapache2-mod-php7.0 php7.0-cli php7.0-common php7.0-mbstring php7.0-gd php7.0-intl php7.0-xml php7.0-mysql php7.0-mcrypt php7.0-zip
 
 echo "<?php phpinfo(); ?>" > /var/www/html/info.php
 
@@ -127,7 +122,6 @@ echo "3. phpMyadmin" | tee -a log.txt
 echo "4. MySQL Server" | tee -a log.txt
 echo "5. Screenfetch" | tee -a log.txt
 echo "6. Git and Composer" | tee -a log.txt
-echo "7. Webmin" | tee -a log.txt
 echo "===============" | tee -a log.txt
 echo "MySQL Login:" | tee -a log.txt
 echo "===============" | tee -a log.txt
