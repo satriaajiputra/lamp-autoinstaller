@@ -24,7 +24,7 @@ cd
 
 # update and install some app
 apt-get update -y && apt-get upgrade -y
-apt-get install pwgen apache2 zip unzip -y
+apt-get install pwgen apache2 zip unzip curl vim nano -y
 apt-get install build-essential -y
 
 # set password for mysql-server
